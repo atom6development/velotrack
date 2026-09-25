@@ -1,0 +1,144 @@
+@import "@fontsource-variable/inter";
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Valores crus — trocados pelo tema (data-theme no <html>)
+   -------------------------------------------------------------------------- */
+
+:root {
+  color-scheme: light;
+  --background: #eef0f3;
+  --surface: #ffffff;
+  --surface-hover: #f1f3f5;
+  --surface-active: #e6e9ed;
+  --overlay: #ffffff;
+  --border: #dde1e6;
+  --heading: #0f1216;
+  --body: #2c343d;
+  --muted: #5d6874;
+  --disabled: #9aa3ad;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0b0d10;
+  --surface: #14171c;
+  --surface-hover: #1c2027;
+  --surface-active: #242932;
+  --overlay: #14171c;
+  --border: #262b33;
+  --heading: #f2f4f6;
+  --body: #c7ced6;
+  --muted: #8d98a5;
+  --disabled: #5b6470;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-body);
+  font-family: var(--font-inter);
+}
+
+/* --------------------------------------------------------------------------
+   Tokens do tema
+   -------------------------------------------------------------------------- */
+
+@theme inline {
+  /* Fonte ---------------------------------------------------------------- */
+  --font-inter: "Inter Variable", system-ui, sans-serif;
+
+  /* Cores · marca -------------------------------------------------------- */
+  --color-brand: #e92d2c;
+  --color-brand-steel: #6b7a8a;
+  --color-primary: #d0211f;
+  --color-primary-hover: #b01b1a;
+
+  /* Cores · texto -------------------------------------------------------- */
+  --color-heading: var(--heading);
+  --color-body: var(--body);
+  --color-muted: var(--muted);
+  --color-disabled: var(--disabled);
+
+  /* Cores · fundo, superfície e borda ------------------------------------ */
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-active: var(--surface-active);
+  --color-overlay: var(--overlay);
+  --color-border: var(--border);
+
+  /* Cores · feedback ----------------------------------------------------- */
+  --color-danger: #e5484d;
+
+  /* Cores · status do veículo -------------------------------------------- */
+  --color-status-moving: #30a46c;
+  --color-status-idle: #f5a524;
+  --color-status-off: #7b8794;
+  --color-status-offline: #e5484d;
+
+  /* Tipografia · escala fluida (viewport 768px → 1440px) ------------------ */
+  --text-responsive-lg: clamp(1.625rem, 0.625rem + 2.0833vw, 2.5rem); /* 26px → 40px · h1 */
+  --text-heading-xs: clamp(
+    1.125rem,
+    0.8393rem + 0.5952vw,
+    1.375rem
+  ); /* 18px → 22px · título de painel */
+  --text-responsive-md: clamp(1rem, 0.8571rem + 0.2976vw, 1.125rem); /* 16px → 18px · corpo */
+
+  /* Tipografia · rótulos (tamanho fixo) ----------------------------------- */
+  --text-eyebrow: 0.75rem; /* 12px */
+  --text-eyebrow--line-height: 0.875rem; /* 14px */
+  --text-eyebrow--letter-spacing: 0.1667em;
+  --text-eyebrow--font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   MapLibre — controles nativos no tema do projeto
+   -------------------------------------------------------------------------- */
+
+.maplibregl-ctrl-group {
+  background: var(--color-overlay);
+  border: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+.maplibregl-ctrl-group button + button {
+  border-top-color: var(--color-border);
+}
+
+[data-theme="dark"] .maplibregl-ctrl-group button .maplibregl-ctrl-icon {
+  filter: invert(1);
+}
+
+.maplibregl-ctrl-attrib {
+  background: var(--color-overlay);
+  color: var(--color-muted);
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--color-muted);
+}
