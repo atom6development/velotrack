@@ -1,16 +1,30 @@
-import { twMerge } from "tailwind-merge";
+import { tv } from "tailwind-variants";
+import logo from "@/assets/brand/velotrack-logo.png";
 
-export default function Logo({ className }) {
+const logoImage = tv({
+  base: "w-auto shrink-0 select-none",
+  variants: {
+    size: {
+      md: "h-7",
+      lg: "h-10",
+    },
+  },
+  defaultVariants: { size: "md" },
+});
+
+const DIMENSIONS = {
+  md: { width: 105, height: 28 },
+  lg: { width: 150, height: 40 },
+};
+
+export default function Logo({ size = "md", className }) {
   return (
-    <span className={twMerge("inline-flex items-center gap-2", className)}>
-      <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
-        <circle cx="16" cy="16" r="11" fill="none" className="stroke-brand-steel" strokeWidth="4" />
-        <circle cx="18.5" cy="14.5" r="6" className="fill-brand" />
-      </svg>
-      <span className="text-base font-extrabold tracking-tight italic">
-        <span className="text-brand-steel">VELO</span>
-        <span className="text-brand">TRACK</span>
-      </span>
-    </span>
+    <img
+      src={logo}
+      alt="Velotrack"
+      {...DIMENSIONS[size]}
+      draggable="false"
+      className={logoImage({ size, class: className })}
+    />
   );
 }

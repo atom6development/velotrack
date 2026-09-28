@@ -43,7 +43,7 @@ export default function Login() {
 
       <div className="flex w-full max-w-sm flex-col gap-8">
         <div className="flex flex-col items-center gap-4 text-center">
-          <Logo className="scale-125" />
+          <Logo size="lg" />
           <div className="flex flex-col gap-1">
             <h1 className="text-heading-xs font-semibold text-heading">Central de Monitoramento</h1>
             <p className="text-sm text-muted">Entre com sua conta para acompanhar a frota.</p>

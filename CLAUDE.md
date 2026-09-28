@@ -33,7 +33,7 @@ Toda rota interna fica dentro do `<ProtectedRoute />` em `src/router.jsx`.
   sempre acompanhada de texto (`src/lib/vehicle-status.js`).
 - Tipografia: Inter (via `@fontsource-variable/inter`). Ícones: Phosphor.
 - Tom: sóbrio e operacional; cor reservada para marca, ação principal e status.
-- Logo atual é um wordmark provisório em SVG (`Logo.jsx`) — trocar pelo SVG oficial quando chegar.
+- Logo oficial em `src/assets/brand/velotrack-logo.png` (versão otimizada, 300×80) via `Logo.jsx`; original em `.claude/docs/marca-logo-velotrack.png`. Favicon gerado do símbolo.
 
 ## Estrutura
 
