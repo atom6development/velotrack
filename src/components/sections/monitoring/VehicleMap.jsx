@@ -1,9 +1,19 @@
-import { LngLatBounds, Map as MapLibreMap, Marker, NavigationControl } from "maplibre-gl";
+import {
+  LngLatBounds,
+  Map as MapLibreMap,
+  Marker,
+  NavigationControl,
+  setWorkerUrl,
+} from "maplibre-gl";
+import mapWorkerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import { useEffect, useRef } from "react";
 import { getMapPadding, getMapStyle, MAP_CENTER, MAP_ZOOM } from "@/lib/map-style";
 import { VEHICLE_STATUS } from "@/lib/vehicle-status";
 import { useMonitoringStore } from "@/store/useMonitoringStore";
 import { useUiStore } from "@/store/useUiStore";
+
+// no build, o MapLibre procura o worker ao lado do bundle e não acha; o Vite empacota e dá a URL
+setWorkerUrl(mapWorkerUrl);
 
 function createMarkerElement(vehicle, onSelect) {
   const element = document.createElement("button");

@@ -7,6 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   // o MapLibre 6 resolve o worker pelo caminho do próprio pacote; pré-empacotado, ele se perde
   optimizeDeps: { exclude: ["maplibre-gl"] },
+  worker: { format: "es" },
   resolve: {
     // o mesmo alias precisa existir no jsconfig.json, para o editor
     alias: {
